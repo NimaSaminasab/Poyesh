@@ -80,8 +80,7 @@ public class ElevService {
             return elevOld;
         }
         else {
-            System.out.println("Hei");
-            return null ;
+             return null ;
         }
     }
 }
