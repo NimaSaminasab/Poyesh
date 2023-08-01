@@ -1,5 +1,6 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -34,6 +35,7 @@ public class Elev {
     private String film ;
 
     @OneToMany(mappedBy = "elev")
+    @JsonIgnore
     private List<ElevSupporter> elevSupporters = new ArrayList<>() ;
 
     public Elev(String fornavn, String etternavn, String personnummer, String fDato,

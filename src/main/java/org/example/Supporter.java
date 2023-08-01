@@ -1,5 +1,6 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,6 +23,7 @@ public class Supporter {
     private int betaltTilNa ;
 
     @OneToMany(mappedBy = "supporter")
+    @JsonIgnore
     private List<ElevSupporter> elevSupporters = new ArrayList<>();
 
 

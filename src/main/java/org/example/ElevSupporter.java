@@ -1,5 +1,6 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,9 +13,11 @@ public class ElevSupporter {
     @GeneratedValue
     long id ;
     @ManyToOne
+    @JsonIgnore
     private Elev elev;
 
     @ManyToOne
+    @JsonIgnore
     private Supporter supporter;
     int belopBetalt ;
 
