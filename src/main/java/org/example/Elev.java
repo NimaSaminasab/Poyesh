@@ -3,8 +3,12 @@ package org.example;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,6 +33,9 @@ public class Elev {
     private String bilde ;
     private String film ;
 
+    @OneToMany(mappedBy = "elev")
+    private List<ElevSupporter> elevSupporters = new ArrayList<>() ;
+
     public Elev(String fornavn, String etternavn, String personnummer, String fDato,
                 String skolenavn, String farFornavn, String farEtternavn, String morFornavn,
                 String morEtternavn, int behovSumPrManed, int motattSumTilNa,
@@ -48,4 +55,6 @@ public class Elev {
         this.film = film;
     }
     public Elev(){}
+
+
 }
