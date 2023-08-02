@@ -1,10 +1,7 @@
 package org.example;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +19,7 @@ public class Supporter {
     private String etternavn ;
     private int betaltTilNa ;
 
-    @OneToMany(mappedBy = "supporter")
+    @OneToMany(mappedBy = "supporter", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ElevSupporter> elevSupporters = new ArrayList<>();
 
@@ -33,4 +30,5 @@ public class Supporter {
         this.betaltTilNa = betaltTilNa;
     }
     public Supporter(){}
+
 }

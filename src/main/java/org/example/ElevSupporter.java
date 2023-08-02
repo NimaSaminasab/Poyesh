@@ -13,11 +13,11 @@ public class ElevSupporter {
     @GeneratedValue
     long id ;
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
     private Elev elev;
 
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
     private Supporter supporter;
     int belopBetalt ;
 

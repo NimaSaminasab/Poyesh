@@ -10,17 +10,60 @@ import java.util.List;
 public class ElevSupporterController {
     @Autowired
     ElevSupporterService elevSupporterService ;
+    @Autowired
+    ElevService elevService;
+    @Autowired
+    SupporterService supporterService;
+
 
     @PostMapping("/createElevSupporter")
     @ResponseBody
     public String createElevSupporter(@RequestBody ElevSupporter elevSupporter) throws Exception {
-        if (elevSupporter != null) {
-            elevSupporterService.createElevSupporter(elevSupporter);
-            return "ok";
-        } else
+
+       if (elevSupporter != null) {
+            Elev elev = elevService.findElevById(elevSupporter.getElev().getId());
+            Supporter supporter = supporterService.findSupporterById(elevSupporter.getSupporter().getId());
+            if (elev != null && supporter != null) {
+                elevSupporter.setElev(elev);
+                elevSupporter.setSupporter(supporter);
+                elevSupporterService.createElevSupporter(elevSupporter);
+
+                elev.getElevSupporters().add(elevSupporter);
+                supporter.getElevSupporters().add(elevSupporter);
+
+                return "ok";
+            } else {
+                return "Elev or Supporter not found with provided ids";
+            }
+        } else {
             return "error";
+        }
     }
 
+
+    /*
+    @PostMapping("/createElevSupporter")
+    @ResponseBody
+    public String createElevSupporter(@RequestBody ElevSupporter elevSupporter) throws Exception {
+        if (elevSupporter != null) {
+            Elev elev = elevService.findElevById(elevSupporter.getElev().getId()) ;
+            Supporter supporter = supporterService.findSupporterById(elevSupporter.getSupporter().getId()) ;
+
+            if(elev!=null && supporter!=null){
+                elevSupporter.setElev(elev);
+                elevSupporter.setSupporter(supporter);
+                elevSupporterService.createElevSupporter(elevSupporter);
+
+                elev.getElevSupporters().add(elevSupporter);
+                supporter.getElevSupporters().add(elevSupporter) ;
+                return "Ok" ;
+            }
+            else {
+                return "The id for elev or supporter is not correct" ;
+            }
+        }
+            return "error";
+    }*/
     @DeleteMapping("/deleteElevSupporter/{id}")
     @ResponseBody
     public String deleteElevSupporterById(@PathVariable long id) throws Exception {
