@@ -19,7 +19,7 @@ public class ElevSupporter {
     @ManyToOne
     //@JsonIgnore
     private Supporter supporter;
-    int belopBetalt ;
+    private int belopBetalt ;
 
     public ElevSupporter(Elev elev, Supporter supporter, int belopBetalt) {
         this.elev = elev;

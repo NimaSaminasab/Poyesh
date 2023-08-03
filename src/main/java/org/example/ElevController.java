@@ -26,7 +26,6 @@ public class ElevController {
     @DeleteMapping("/deleteElev/{id}")
     @ResponseBody
     public String deleteElevById(@PathVariable long id) throws Exception {
-        System.out.println("hei");
         if (id > 0) {
             Elev elev = elevService.findElevById(id);
             if (elev != null) {

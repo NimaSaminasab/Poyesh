@@ -52,18 +52,7 @@ public class ElevService {
             if (elev.getSkolenavn() != null) {
                 elevOld.setSkolenavn(elev.getSkolenavn());
             }
-            if (elev.getFarFornavn() != null) {
-                elevOld.setFarFornavn(elev.getFarFornavn());
-            }
-            if (elev.getFarEtternavn() != null) {
-                elevOld.setFarEtternavn(elev.getFarEtternavn());
-            }
-            if (elev.getMorFornavn() != null) {
-                elevOld.setMorFornavn(elev.getMorFornavn());
-            }
-            if (elev.getMorEtternavn() != null) {
-                elevOld.setMorEtternavn(elev.getMorEtternavn());
-            }
+
             if (elev.getBehovSumPrManed() != 0) {
                 elevOld.setBehovSumPrManed(elev.getBehovSumPrManed());
             }
