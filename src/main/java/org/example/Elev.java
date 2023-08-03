@@ -31,6 +31,10 @@ public class Elev {
     @JsonIgnore
     private List<ElevSupporter> elevSupporters = new ArrayList<>() ;
 
+    @OneToMany(mappedBy = "elev", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Betaling> betalingList = new ArrayList<>() ;
+
     @ManyToOne
     private Family family;
 

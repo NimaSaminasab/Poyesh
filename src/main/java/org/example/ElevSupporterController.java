@@ -40,30 +40,6 @@ public class ElevSupporterController {
         }
     }
 
-
-    /*
-    @PostMapping("/createElevSupporter")
-    @ResponseBody
-    public String createElevSupporter(@RequestBody ElevSupporter elevSupporter) throws Exception {
-        if (elevSupporter != null) {
-            Elev elev = elevService.findElevById(elevSupporter.getElev().getId()) ;
-            Supporter supporter = supporterService.findSupporterById(elevSupporter.getSupporter().getId()) ;
-
-            if(elev!=null && supporter!=null){
-                elevSupporter.setElev(elev);
-                elevSupporter.setSupporter(supporter);
-                elevSupporterService.createElevSupporter(elevSupporter);
-
-                elev.getElevSupporters().add(elevSupporter);
-                supporter.getElevSupporters().add(elevSupporter) ;
-                return "Ok" ;
-            }
-            else {
-                return "The id for elev or supporter is not correct" ;
-            }
-        }
-            return "error";
-    }*/
     @DeleteMapping("/deleteElevSupporter/{id}")
     @ResponseBody
     public String deleteElevSupporterById(@PathVariable long id) throws Exception {
