@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33535a36-198b-4e44-921a-b3187c0ab43b" name="Changes" comment="Base of elev,supporter,elevsupporter is finished">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Family.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/FamilyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/FamilyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/FamilyService.java" afterDir="false" />
+    <list default="true" id="33535a36-198b-4e44-921a-b3187c0ab43b" name="Changes" comment="Base of Family is finished">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/BankInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/BankInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/BankInfoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/BankInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690975366841</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Base of Family is finished">
+      <option name="closed" value="true" />
+      <created>1691053059185</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691053059185</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -127,7 +134,8 @@
     <MESSAGE value="ElevSupportersetup is finished" />
     <MESSAGE value="correction" />
     <MESSAGE value="Base of elev,supporter,elevsupporter is finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base of elev,supporter,elevsupporter is finished" />
+    <MESSAGE value="Base of Family is finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base of Family is finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -13,6 +13,7 @@ public class ElevController {
     @Autowired
     ElevService elevService ;
 
+
     @PostMapping("/createElev")
     @ResponseBody
     public String createElev(@RequestBody Elev elev) throws Exception {
@@ -54,5 +55,11 @@ public class ElevController {
     @ResponseBody
     public Elev updateElev(@RequestBody Elev elev,@PathVariable long elevId) throws Exception {
         return elevService.updateElev(elev,elevId) ;
+    }
+
+    @PostMapping("/addFamily/{elevId}/{familyId}")
+    @ResponseBody
+    public Elev addFamily(@PathVariable long elevId, @PathVariable long familyId) throws Exception {
+        return elevService.addFamily(elevId,familyId) ;
     }
 }

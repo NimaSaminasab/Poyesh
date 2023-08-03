@@ -34,9 +34,15 @@ public class Elev {
     @ManyToOne
     private Family family;
 
+    @OneToMany(mappedBy = "elev", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<BankInfo> bankInfoList = new ArrayList<>() ;
+
+
+
     public Elev(String fornavn, String etternavn, String personnummer, String fDato,
                 String skolenavn, int behovSumPrManed, int motattSumTilNa,
-                String bilde, String film, Family family) {
+                String bilde, String film) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.personnummer = personnummer;
@@ -46,9 +52,11 @@ public class Elev {
         this.motattSumTilNa = motattSumTilNa;
         this.bilde = bilde;
         this.film = film;
-        this.family = family ;
+
     }
     public Elev(){}
+
+
 
 
 }

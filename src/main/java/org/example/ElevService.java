@@ -2,6 +2,7 @@ package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -9,6 +10,9 @@ import java.util.List;
 public class ElevService {
     @Autowired
     ElevRepository elevRepository;
+    @Autowired
+    FamilyRepository familyRepository ;
+
 
     public Elev createElev(Elev elev) throws Exception {
         if (elev == null) {
@@ -71,5 +75,15 @@ public class ElevService {
         else {
              return null ;
         }
+    }
+    public Elev addFamily(@PathVariable long elevId, @PathVariable long familyId) throws Exception {
+        Elev elev = elevRepository.findById(elevId).orElse(null) ;
+        Family family = familyRepository.findById(familyId).orElse(null) ;
+        if(elev!= null && family !=null){
+            elev.setFamily(family);
+            elevRepository.save(elev) ;
+            return  elev ;
+        }
+        return null ;
     }
 }
