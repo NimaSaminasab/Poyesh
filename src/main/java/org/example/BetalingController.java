@@ -56,9 +56,9 @@ public class BetalingController {
         return null;
     }
 
-    @GetMapping("/findAllElevSupporter")
+    @GetMapping("/findAllBetaling")
     @ResponseBody
-    public List<Betaling> findAllElevSupporter() {
+    public List<Betaling> findAllBetaling() {
         return betalingService.findAllBetaling();
     }
 

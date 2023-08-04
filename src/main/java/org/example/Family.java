@@ -21,7 +21,7 @@ public class Family {
     private String morFornavn ;
     private String morEtternavn ;
 
-    @OneToMany(mappedBy = "family", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "family")
     @JsonIgnore
     private List<Elev> elevList = new ArrayList<>();
     private int sumMotatt ;
@@ -34,4 +34,8 @@ public class Family {
         this.sumMotatt = sumMotatt;
     }
     public Family(){}
+
+    public void addElevToFamily(Elev elev){
+        elevList.add(elev) ;
+    }
 }

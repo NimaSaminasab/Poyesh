@@ -25,10 +25,45 @@ public class FamilyController {
 
     @DeleteMapping("/deleteFamily/{id}")
     @ResponseBody
+    /*@RestController
+public class FamilyController {
+    @Autowired
+    FamilyService familyService;
+
+    @Autowired
+    ElevService elevService;
+
+    // ... other methods ...
+
+    @DeleteMapping("/deleteFamily/{id}")
+    @ResponseBody
     public String deleteFamilyById(@PathVariable long id) throws Exception {
         if (id > 0) {
             Family family = familyService.findFamilyById(id);
             if (family != null) {
+                // Remove the association between Elev and Family
+                for (Elev elev : family.getElevList()) {
+                    elev.setFamily(null);
+                    elevService.updateElev(elev, elev.getId());
+                }
+                return familyService.deleteFamily(family);
+            } else
+                return "Couldn't find Family with id " + id;
+        } else
+            return "No valid id";
+    }
+
+    // ... other methods ...
+}
+*/
+    public String deleteFamilyById(@PathVariable long id) throws Exception {
+        if (id > 0) {
+            Family family = familyService.findFamilyById(id);
+            if (family != null) {
+                for (Elev elev : family.getElevList()) {
+                    elev.setFamily(null);
+                    elevService.updateElev(elev, elev.getId());
+                }
                 return familyService.deleteFamily(family);
             } else
                 return "Couldn´t find Costumer with id " + id;
@@ -49,6 +84,22 @@ public class FamilyController {
     @ResponseBody
     public List<Family> findAllFamily() {
         return familyService.findAllFamily();
+    }
+
+    @GetMapping("/assignElevToFamily/{elevId}/{familyId}")
+    @ResponseBody
+    public String assignElevToFamily(@PathVariable long elevId,@PathVariable long familyId){
+        Family family= familyService.findFamilyById(familyId);
+        if(family== null)
+            return "FamilyId " + familyId + " doesnt exist." ;
+        Elev elev = elevService.findElevById(elevId) ;
+        if(elev== null)
+            return "ElevId " + elevId + " doesnt exist." ;
+        elev.addFamilyToElev(family);
+        elevService.elevRepository.save(elev) ;
+        family.addElevToFamily(elev);
+        familyService.familyRepository.save(family) ;
+        return "ok"  ;
     }
 
 

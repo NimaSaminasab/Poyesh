@@ -19,6 +19,7 @@ public class Elev {
     private String fornavn ;
     private String etternavn ;
     private String personnummer ;
+    private String by ;
     private String fDato ;
     private String skolenavn ;
     private int behovSumPrManed ;
@@ -44,12 +45,13 @@ public class Elev {
 
 
 
-    public Elev(String fornavn, String etternavn, String personnummer, String fDato,
+    public Elev(String fornavn, String etternavn, String personnummer,String by, String fDato,
                 String skolenavn, int behovSumPrManed, int motattSumTilNa,
                 String bilde, String film) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.personnummer = personnummer;
+        this.by = by ;
         this.fDato = fDato;
         this.skolenavn = skolenavn;
         this.behovSumPrManed = behovSumPrManed;
@@ -59,6 +61,11 @@ public class Elev {
 
     }
     public Elev(){}
+
+    public void addFamilyToElev(Family f){
+       family = f ;
+        System.out.println(family.getId());
+    }
 
 
 
