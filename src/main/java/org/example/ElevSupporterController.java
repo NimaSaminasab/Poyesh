@@ -24,13 +24,14 @@ public class ElevSupporterController {
             Elev elev = elevService.findElevById(elevSupporter.getElev().getId());
             Supporter supporter = supporterService.findSupporterById(elevSupporter.getSupporter().getId());
             if (elev != null && supporter != null) {
+                elev.setHarSupporter(true);
                 elevSupporter.setElev(elev);
                 elevSupporter.setSupporter(supporter);
                 elevSupporterService.createElevSupporter(elevSupporter);
 
                 elev.getElevSupporters().add(elevSupporter);
                 supporter.getElevSupporters().add(elevSupporter);
-
+                elevService.elevRepository.save(elev) ;
                 return "ok";
             } else {
                 return "Elev or Supporter not found with provided ids";

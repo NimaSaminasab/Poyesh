@@ -15,14 +15,14 @@ public class Betaling {
     @GeneratedValue
     private long id ;
     private String fakturaNummer ;
-    private double belop ;
+    private int belop ;
     private String dato ;
     @ManyToOne
     Elev elev ;
     @ManyToOne
     Supporter supporter ;
 
-    public Betaling(String fakturaNummer, double belop, String dato,
+    public Betaling(String fakturaNummer, int belop, String dato,
                     Elev elev, Supporter supporter) {
         this.fakturaNummer = fakturaNummer;
         this.belop = belop;

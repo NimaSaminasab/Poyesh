@@ -53,4 +53,20 @@ public class SupporterController {
     public Supporter updateElev(@RequestBody Supporter supporter,@PathVariable long supporterId) throws Exception {
         return supporterService.updateSupporter(supporter,supporterId) ;
     }
+    @GetMapping("/findSupporterByFornavnAndEtternavn/{fornavn}/{etternavn}")
+    @ResponseBody
+    public List<Supporter> findSupporterByFornavnAndEtternavn(@PathVariable String fornavn,@PathVariable String etternavn){
+        return supporterService.findSupporterByFornavnAndEtternavn(fornavn,etternavn) ;
+    }
+    @GetMapping("/findSupporterByFornavn/{fornavn}")
+    @ResponseBody
+    public List<Supporter> findSupporterByFornavn(@PathVariable String fornavn){
+        return supporterService.findSupporterByFornavn(fornavn );
+    }
+    @GetMapping("/findSupporterByEtternavn/{etternavn}")
+    @ResponseBody
+    public List<Supporter> findSupporterByEtternavn(@PathVariable String etternavn){
+        return supporterService.findSupporterByEtternavn(etternavn );
+    }
+
 }

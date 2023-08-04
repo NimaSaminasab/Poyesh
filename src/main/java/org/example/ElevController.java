@@ -62,4 +62,28 @@ public class ElevController {
     public Elev addFamily(@PathVariable long elevId, @PathVariable long familyId) throws Exception {
         return elevService.addFamily(elevId,familyId) ;
     }
+
+    @GetMapping("findElevByPersonnummer/{personnummer}")
+    @ResponseBody
+    public Elev findElevByPersonnummer(@PathVariable String personnummer){
+        return elevService.findElevByPersonnummer(personnummer) ;
+    }
+    @GetMapping("findElevByFornavnAndEtternavn/{fornavn}/{etternavn}")
+    @ResponseBody
+    public List<Elev> findElevByFornavnAndEtternavn(@PathVariable String fornavn,@PathVariable String etternavn){
+        return (List<Elev>) elevService.findElevByFornavnAndEtternavn(fornavn,etternavn);
+    }
+    @GetMapping("findElevByby/{by}")
+    @ResponseBody
+    public List<Elev> findElevByby(@PathVariable String by){
+        return (List<Elev>) elevService.findElevByby(by);
+    }
+
+    @GetMapping("/findElevByHasSupportIsFalse")
+    @ResponseBody
+    public List<Elev> findElevWhoHasNoSupporter(){
+
+        return (List<Elev>) elevService.findElevWhoHasNoSupporter();
+    }
+
 }

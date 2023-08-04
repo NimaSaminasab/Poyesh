@@ -25,37 +25,6 @@ public class FamilyController {
 
     @DeleteMapping("/deleteFamily/{id}")
     @ResponseBody
-    /*@RestController
-public class FamilyController {
-    @Autowired
-    FamilyService familyService;
-
-    @Autowired
-    ElevService elevService;
-
-    // ... other methods ...
-
-    @DeleteMapping("/deleteFamily/{id}")
-    @ResponseBody
-    public String deleteFamilyById(@PathVariable long id) throws Exception {
-        if (id > 0) {
-            Family family = familyService.findFamilyById(id);
-            if (family != null) {
-                // Remove the association between Elev and Family
-                for (Elev elev : family.getElevList()) {
-                    elev.setFamily(null);
-                    elevService.updateElev(elev, elev.getId());
-                }
-                return familyService.deleteFamily(family);
-            } else
-                return "Couldn't find Family with id " + id;
-        } else
-            return "No valid id";
-    }
-
-    // ... other methods ...
-}
-*/
     public String deleteFamilyById(@PathVariable long id) throws Exception {
         if (id > 0) {
             Family family = familyService.findFamilyById(id);

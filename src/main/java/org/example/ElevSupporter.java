@@ -19,12 +19,11 @@ public class ElevSupporter {
     @ManyToOne
     //@JsonIgnore
     private Supporter supporter;
-    private int belopBetalt ;
 
-    public ElevSupporter(Elev elev, Supporter supporter, int belopBetalt) {
+    public ElevSupporter(Elev elev, Supporter supporter) {
         this.elev = elev;
         this.supporter = supporter;
-        this.belopBetalt = belopBetalt;
+
     }
     public ElevSupporter(){}
 }

@@ -86,4 +86,18 @@ public class ElevService {
         }
         return null ;
     }
+    public Elev findElevByPersonnummer(String personnummber){
+        return elevRepository.findByPersonnummer(personnummber) ;
+    }
+    public List<Elev> findElevByFornavnAndEtternavn(String fornavn, String etternavn){
+        return elevRepository.findByFornavnIgnoreCaseAndEtternavnIgnoreCase(fornavn,etternavn) ;
+    }
+    public List<Elev> findElevByby(String by){
+
+        return elevRepository.findBybyIgnoreCase(by) ;
+    }
+
+    public List<Elev> findElevWhoHasNoSupporter(){
+        return elevRepository.findByHarSupporterIsFalse();
+    }
 }

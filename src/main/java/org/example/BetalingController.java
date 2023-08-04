@@ -21,13 +21,20 @@ public class BetalingController {
     public String createBetaling(@RequestBody Betaling betaling) throws Exception {
         if (betaling != null) {
             Elev elev = elevService.findElevById(betaling.getElev().getId());
+            int betaltTilNa = 0;
             Supporter supporter = supporterService.findSupporterById(betaling.getSupporter().getId());
             if (elev != null && supporter != null) {
                 betaling.setElev(elev);
+                elev.setMotattSumTilNa(elev.getMotattSumTilNa()+betaling.getBelop());
                 betaling.setSupporter(supporter);
                 betalingService.createBetaling(betaling);
                 elev.getBetalingList().add(betaling);
                 supporter.getBetalingList().add(betaling);
+                betaltTilNa = supporter.getBetaltTilNa();
+                betaltTilNa += betaling.getBelop();
+                supporter.setBetaltTilNa(betaltTilNa);
+                supporterService.supporterRepository.save(supporter) ;
+                elevService.elevRepository.save(elev);
                 return "ok";
             }
         }

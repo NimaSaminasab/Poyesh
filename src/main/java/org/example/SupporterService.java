@@ -51,4 +51,13 @@ public class SupporterService {
         }
         return null ;
     }
+    public List<Supporter> findSupporterByFornavnAndEtternavn(String fornavn, String etternavn){
+        return supporterRepository.findByFornavnIgnoreCaseAndEtternavnIgnoreCase(fornavn,etternavn) ;
+    }
+    public List<Supporter> findSupporterByFornavn(String fornavn){
+        return supporterRepository.findByFornavnIgnoreCase(fornavn) ;
+    }
+    public List<Supporter> findSupporterByEtternavn(String etternavn){
+        return supporterRepository.findByEtternavnIgnoreCase(etternavn) ;
+    }
 }

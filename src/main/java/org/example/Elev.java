@@ -67,7 +67,4 @@ public class Elev {
         System.out.println(family.getId());
     }
 
-
-
-
 }
