@@ -17,7 +17,12 @@ public class Supporter {
     private long id ;
     private String fornavn ;
     private String etternavn ;
+    private String telefon ;
+    private String adresse ;
+    private String postnummer ;
+    private String poststed ;
     private int betaltTilNa ;
+    private boolean aktiv ;
 
     @OneToMany(mappedBy = "supporter", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -28,10 +33,15 @@ public class Supporter {
     private List<Betaling> betalingList = new ArrayList<>();
 
 
-    public Supporter(String fornavn, String etternavn, int betaltTilNa) {
+    public Supporter(String fornavn, String etternavn, int betaltTilNa , String telefon,
+                     String adresse, String postnummer, String poststed) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.betaltTilNa = betaltTilNa;
+        this.telefon = telefon ;
+        this.adresse = adresse ;
+        this.postnummer = postnummer ;
+        this.poststed = poststed ;
     }
     public Supporter(){}
 

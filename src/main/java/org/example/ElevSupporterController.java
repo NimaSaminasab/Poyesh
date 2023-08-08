@@ -20,25 +20,31 @@ public class ElevSupporterController {
     @ResponseBody
     public String createElevSupporter(@RequestBody ElevSupporter elevSupporter) throws Exception {
 
-       if (elevSupporter != null) {
-            Elev elev = elevService.findElevById(elevSupporter.getElev().getId());
-            Supporter supporter = supporterService.findSupporterById(elevSupporter.getSupporter().getId());
-            if (elev != null && supporter != null) {
-                elev.setHarSupporter(true);
-                elevSupporter.setElev(elev);
-                elevSupporter.setSupporter(supporter);
-                elevSupporterService.createElevSupporter(elevSupporter);
 
-                elev.getElevSupporters().add(elevSupporter);
-                supporter.getElevSupporters().add(elevSupporter);
-                elevService.elevRepository.save(elev) ;
-                return "ok";
+            if (elevSupporter != null) {
+                Elev elev = elevService.findElevById(elevSupporter.getElev().getId());
+                Supporter supporter = supporterService.findSupporterById(elevSupporter.getSupporter().getId());
+                if(!elev.isAktiv())
+                    return "elev is inactive" ;
+                if(!supporter.isAktiv())
+                    return "supporter is inactive" ;
+                if (elev != null && supporter != null) {
+                    elev.setHarSupporter(true);
+                    elevSupporter.setElev(elev);
+                    elevSupporter.setSupporter(supporter);
+                    elevSupporterService.createElevSupporter(elevSupporter);
+
+                    elev.getElevSupporters().add(elevSupporter);
+                    supporter.getElevSupporters().add(elevSupporter);
+                    elevService.elevRepository.save(elev);
+                    return "ok";
+                } else {
+                    return "Elev or Supporter not found with provided ids";
+                }
             } else {
-                return "Elev or Supporter not found with provided ids";
+                return "error";
             }
-        } else {
-            return "error";
-        }
+
     }
 
     @DeleteMapping("/deleteElevSupporter/{id}")

@@ -11,15 +11,20 @@ import java.util.List;
 @CrossOrigin
 public class ElevController {
     @Autowired
-    ElevService elevService ;
+    ElevService elevService;
 
 
     @PostMapping("/createElev")
     @ResponseBody
     public String createElev(@RequestBody Elev elev) throws Exception {
         if (elev != null) {
-            elevService.createElev(elev);
-            return "ok";
+            if (elevService.findElevByPersonnummer(elev.getPersonnummer()) == null) {
+                elev.setAktiv(true);
+                elevService.createElev(elev);
+                return "ok";
+            } else
+                return "Personnummer " + elev.getPersonnummer() + " eksisterer allerede ";
+
         } else
             return "error";
     }
@@ -45,6 +50,7 @@ public class ElevController {
         }
         return null;
     }
+
     @GetMapping("/findAllElev")
     @ResponseBody
     public List<Elev> findAllElev() {
@@ -53,37 +59,69 @@ public class ElevController {
 
     @PutMapping("/updateElev/{elevId}")
     @ResponseBody
-    public Elev updateElev(@RequestBody Elev elev,@PathVariable long elevId) throws Exception {
-        return elevService.updateElev(elev,elevId) ;
+    public Elev updateElev(@RequestBody Elev elev, @PathVariable long elevId) throws Exception {
+        return elevService.updateElev(elev, elevId);
     }
 
     @PostMapping("/addFamily/{elevId}/{familyId}")
     @ResponseBody
     public Elev addFamily(@PathVariable long elevId, @PathVariable long familyId) throws Exception {
-        return elevService.addFamily(elevId,familyId) ;
+        return elevService.addFamily(elevId, familyId);
     }
 
     @GetMapping("findElevByPersonnummer/{personnummer}")
     @ResponseBody
-    public Elev findElevByPersonnummer(@PathVariable String personnummer){
-        return elevService.findElevByPersonnummer(personnummer) ;
+    public Elev findElevByPersonnummer(@PathVariable String personnummer) {
+        return elevService.findElevByPersonnummer(personnummer);
     }
+
     @GetMapping("findElevByFornavnAndEtternavn/{fornavn}/{etternavn}")
     @ResponseBody
-    public List<Elev> findElevByFornavnAndEtternavn(@PathVariable String fornavn,@PathVariable String etternavn){
-        return (List<Elev>) elevService.findElevByFornavnAndEtternavn(fornavn,etternavn);
+    public List<Elev> findElevByFornavnAndEtternavn(@PathVariable String fornavn, @PathVariable String etternavn) {
+        return (List<Elev>) elevService.findElevByFornavnAndEtternavn(fornavn, etternavn);
     }
+
     @GetMapping("findElevByby/{by}")
     @ResponseBody
-    public List<Elev> findElevByby(@PathVariable String by){
+    public List<Elev> findElevByby(@PathVariable String by) {
         return (List<Elev>) elevService.findElevByby(by);
     }
 
     @GetMapping("/findElevByHasSupportIsFalse")
     @ResponseBody
-    public List<Elev> findElevWhoHasNoSupporter(){
+    public List<Elev> findElevWhoHasNoSupporter() {
 
         return (List<Elev>) elevService.findElevWhoHasNoSupporter();
+    }
+
+    @GetMapping("/deactivateElev/{id}")
+    @ResponseBody
+    public String deactiveElev(@PathVariable long id) {
+        Elev elev = elevService.findElevById(id);
+        if (elev != null) {
+            elev.setAktiv(false);
+            return elev.getFornavn() + " " + elev.getEtternavn() + " is deactivated ";
+        }
+        return "no elev with id " + id;
+    }
+    @GetMapping("/reactivateElev/{id}")
+    @ResponseBody
+    public String reactiveElev(@PathVariable long id) {
+        Elev elev = elevService.findElevById(id);
+        if (elev != null) {
+            elev.setAktiv(true);
+            return elev.getFornavn() + " " + elev.getEtternavn() + " is reactivated ";
+        }
+        return "no elev with id " + id;
+    }
+    @GetMapping("/findBankInfoForElevByElevId/{id}")
+    @ResponseBody
+    public List<BankInfo> findBankInfoForElevByElevId(@PathVariable long id) {
+        Elev elev = elevService.findElevById(id);
+        if (elev != null) {
+            return elev.getBankInfoList();
+        }
+        return null ;
     }
 
 }

@@ -15,31 +15,49 @@ public class BetalingController {
     ElevService elevService;
     @Autowired
     SupporterService supporterService;
+    @Autowired
+    FamilyService familyService ;
+
 
     @PostMapping("/createBetaling")
     @ResponseBody
     public String createBetaling(@RequestBody Betaling betaling) throws Exception {
         if (betaling != null) {
             Elev elev = elevService.findElevById(betaling.getElev().getId());
-            int betaltTilNa = 0;
-            Supporter supporter = supporterService.findSupporterById(betaling.getSupporter().getId());
-            if (elev != null && supporter != null) {
-                betaling.setElev(elev);
-                elev.setMotattSumTilNa(elev.getMotattSumTilNa()+betaling.getBelop());
-                betaling.setSupporter(supporter);
-                betalingService.createBetaling(betaling);
-                elev.getBetalingList().add(betaling);
-                supporter.getBetalingList().add(betaling);
-                betaltTilNa = supporter.getBetaltTilNa();
-                betaltTilNa += betaling.getBelop();
-                supporter.setBetaltTilNa(betaltTilNa);
-                supporterService.supporterRepository.save(supporter) ;
-                elevService.elevRepository.save(elev);
-                return "ok";
-            }
+            if (elev.isAktiv()) {
+                int betaltTilNa = 0;
+                int sumMotatt = 0 ;
+                Supporter supporter = supporterService.findSupporterById(betaling.getSupporter().getId());
+                if (supporter.isAktiv()) {
+                    if (elev != null && supporter != null) {
+                        betaling.setElev(elev);
+                        elev.setMotattSumTilNa(elev.getMotattSumTilNa() + betaling.getBelop());
+                        betaling.setSupporter(supporter);
+                        betalingService.createBetaling(betaling);
+                        elev.getBetalingList().add(betaling);
+                        supporter.getBetalingList().add(betaling);
+                        betaltTilNa = supporter.getBetaltTilNa();
+                        betaltTilNa += betaling.getBelop();
+                        supporter.setBetaltTilNa(betaltTilNa);
+                        supporterService.supporterRepository.save(supporter);
+                        elevService.elevRepository.save(elev);
+                        Family family = elev.getFamily();
+                        sumMotatt = family.getSumMotatt() + betaling.getBelop();
+                        family.setSumMotatt(sumMotatt);
+                        familyService.familyRepository.save(family) ;
+
+
+                        return "ok";
+                    } else
+                        return "error";
+                } else
+                    return "Supporter is inactive";
+            } else
+                return "elev is inactiv";
         }
-        return "error";
+        return "error" ;
     }
+
 
     @DeleteMapping("/deleteBetaling/{id}")
     @ResponseBody

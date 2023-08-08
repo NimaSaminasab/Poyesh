@@ -15,56 +15,69 @@ public class Elev {
     @Id
     @GeneratedValue
 
-    private long id ;
-    private String fornavn ;
-    private String etternavn ;
-    private String personnummer ;
-    private String by ;
-    private String fDato ;
-    private String skolenavn ;
-    private int behovSumPrManed ;
-    private int motattSumTilNa ;
-    private boolean harSupporter ;
-    private String bilde ;
-    private String film ;
+    private long id;
+    private String fornavn;
+    private String etternavn;
+    private String personnummer;
+    private String telefon1;
+    private String telefon2;
+    private String telefon3;
+    private String by;
+    private String fDato;
+    private String skolenavn;
+    private int behovSumPrManed;
+    private int motattSumTilNa;
+    private boolean harSupporter;
+    private boolean aktiv;
+    private String bilde;
+    private String film;
 
     @OneToMany(mappedBy = "elev", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<ElevSupporter> elevSupporters = new ArrayList<>() ;
+    private List<ElevSupporter> elevSupporters = new ArrayList<>();
 
     @OneToMany(mappedBy = "elev", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Betaling> betalingList = new ArrayList<>() ;
+    private List<Betaling> betalingList = new ArrayList<>();
 
     @ManyToOne
     private Family family;
 
     @OneToMany(mappedBy = "elev", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<BankInfo> bankInfoList = new ArrayList<>() ;
+    private List<BankInfo> bankInfoList = new ArrayList<>();
 
 
-
-    public Elev(String fornavn, String etternavn, String personnummer,String by, String fDato,
+    public Elev(String fornavn, String etternavn, String personnummer, String telefon1, String telefon2,
+                String telefon3, String by, String fDato,
                 String skolenavn, int behovSumPrManed, int motattSumTilNa,
                 String bilde, String film) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.personnummer = personnummer;
-        this.by = by ;
+        this.by = by;
         this.fDato = fDato;
         this.skolenavn = skolenavn;
         this.behovSumPrManed = behovSumPrManed;
         this.motattSumTilNa = motattSumTilNa;
+        this.telefon1 = telefon1;
+        this.telefon2 = telefon2;
+        this.telefon3 = telefon3;
         this.bilde = bilde;
         this.film = film;
+        aktiv = true;
 
     }
-    public Elev(){}
 
-    public void addFamilyToElev(Family f){
-       family = f ;
-        System.out.println(family.getId());
+    public Elev() {
+    }
+
+    public boolean addFamilyToElev(Family f) {
+        if (f.isAktiv()) {
+            family = f;
+            return true;
+        } else
+            return false;
     }
 
 }

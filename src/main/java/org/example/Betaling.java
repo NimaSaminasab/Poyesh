@@ -21,6 +21,8 @@ public class Betaling {
     Elev elev ;
     @ManyToOne
     Supporter supporter ;
+    @ManyToOne
+    CurrencyExchange currencyExchange ;
 
     public Betaling(String fakturaNummer, int belop, String dato,
                     Elev elev, Supporter supporter) {

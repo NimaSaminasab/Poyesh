@@ -9,25 +9,29 @@ import java.util.List;
 @CrossOrigin
 public class BankInfoController {
     @Autowired
-    BankInfoService bankInfoService ;
+    BankInfoService bankInfoService;
+    @Autowired
+    ElevService elevService ;
 
     @PostMapping("/createBankInfo")
     @ResponseBody
     public String createBankInfo(@RequestBody BankInfo bankInfo) throws Exception {
+        Elev elev = elevService.findElevById(bankInfo.getElev().getId()) ;
+        if(! elev.isAktiv())
+            return "Elev is inactive" ;
         if (bankInfo != null) {
             bankInfoService.createBankInfo(bankInfo);
             return "ok";
         } else
             return "error";
     }
-
     @DeleteMapping("/deleteBankInfo/{id}")
     @ResponseBody
     public String deleteBankInfoById(@PathVariable long id) throws Exception {
         if (id > 0) {
             BankInfo bankInfo = bankInfoService.findBankInfoById(id);
             if (bankInfo != null) {
-                return bankInfoService.deleteBankInfo(bankInfo) ;
+                return bankInfoService.deleteBankInfo(bankInfo);
             } else
                 return "Couldn´t find Costumer with id " + id;
         } else
@@ -42,12 +46,12 @@ public class BankInfoController {
         }
         return null;
     }
+
     @GetMapping("/findAllBankInfo")
     @ResponseBody
     public List<BankInfo> findAllBankInfo() {
         return bankInfoService.findAllBankInfo();
     }
-
 
 
 }

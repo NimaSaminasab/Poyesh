@@ -18,6 +18,7 @@ public class FamilyController {
     @ResponseBody
     public Family createFamily(@RequestBody Family family) throws Exception {
         if (family != null) {
+            family.setAktiv(true);
             return familyService.createFamily(family);
         }
         return null;
@@ -64,12 +65,38 @@ public class FamilyController {
         Elev elev = elevService.findElevById(elevId) ;
         if(elev== null)
             return "ElevId " + elevId + " doesnt exist." ;
-        elev.addFamilyToElev(family);
-        elevService.elevRepository.save(elev) ;
-        family.addElevToFamily(elev);
-        familyService.familyRepository.save(family) ;
-        return "ok"  ;
+        if(elev.addFamilyToElev(family) ) {
+            elevService.elevRepository.save(elev);
+        }
+        else
+            return "Family is inactive" ;
+        if(family.addElevToFamily(elev) ) {
+            familyService.familyRepository.save(family);
+            return "ok";
+        }
+        return "elev is inaktive" ;
     }
+    @GetMapping("/findFamilyByFarFornavnAndEtternavn/{fornavn}/{etternavn}")
+    @ResponseBody
+    public List<Family> findFamilyByFarFornavnAndEtternavn(@PathVariable String fornavn, @PathVariable String etternavn){
+      return familyService.findFamilyByFarFornavnAndEtternavn(fornavn,etternavn) ;
+    }
+    @GetMapping("/findFamilyByMorFornavnAndEtternavn/{fornavn}/{etternavn}")
+    @ResponseBody
+    public List<Family> findFamilyByMorFornavnAndEtternavn(@PathVariable String fornavn, @PathVariable String etternavn){
+        return familyService.findFamilyByMorFornavnAndEtternavn(fornavn,etternavn) ;
+    }
+    @GetMapping("/deactivateFamily")
+    @ResponseBody
+    public String deactiveFamily(long id){
+        Family family = familyService.findFamilyById(id) ;
+        if(family != null){
+            family.setAktiv(false);
+            return "Family with id " + id  + " is deactivated " ;
+        }
+        return "no family with id " + id ;
+    }
+
 
 
 }

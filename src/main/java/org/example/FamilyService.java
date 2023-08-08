@@ -33,4 +33,12 @@ public class FamilyService {
     public List<Family> findAllFamily() {
         return (List<Family>) familyRepository.findAll();
     }
+
+    public List<Family> findFamilyByFarFornavnAndEtternavn(String fornavn,String etternavn){
+        return familyRepository.findFamilyByFarFornavnIgnoreCaseAndFarEtternavnIgnoreCase(fornavn,etternavn) ;
+    }
+    public List<Family> findFamilyByMorFornavnAndEtternavn(String fornavn,String etternavn){
+        return familyRepository.findFamilyByMorFornavnIgnoreCaseAndMorEtternavnIgnoreCase(fornavn,etternavn) ;
+    }
+
 }

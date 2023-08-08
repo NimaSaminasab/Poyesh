@@ -20,6 +20,7 @@ public class Family {
     private String farEtternavn ;
     private String morFornavn ;
     private String morEtternavn ;
+    private boolean isAktiv ;
 
     @OneToMany(mappedBy = "family")
     @JsonIgnore
@@ -35,7 +36,12 @@ public class Family {
     }
     public Family(){}
 
-    public void addElevToFamily(Elev elev){
-        elevList.add(elev) ;
+    public boolean addElevToFamily(Elev elev){
+        if(elev.isAktiv()) {
+            elevList.add(elev);
+            return true;
+        }
+        else
+            return false;
     }
 }

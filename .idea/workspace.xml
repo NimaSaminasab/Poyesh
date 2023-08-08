@@ -4,20 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33535a36-198b-4e44-921a-b3187c0ab43b" name="Changes" comment="rettelse">
+    <list default="true" id="33535a36-198b-4e44-921a-b3187c0ab43b" name="Changes" comment="la til en del query">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchangeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchangeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchangeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BankInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BankInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Betaling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Betaling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BetalingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BetalingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Family.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FamilyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FamilyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FamilyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FamilyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FamilyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FamilyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Supporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Supporter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SupporterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SupporterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SupporterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SupporterRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SupporterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SupporterService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "full.screen.before.presentation.mode": "true",
     "last_opened_file_path": "C:/Users/nimas/Desktop/PauEx2"
   }
 }]]></component>
@@ -153,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691151530332</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="la til en del query">
+      <option name="closed" value="true" />
+      <created>1691186518577</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1691186518577</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -167,7 +180,8 @@
     <MESSAGE value="Base of BankInfo is finished" />
     <MESSAGE value="Base of Betaling is finished" />
     <MESSAGE value="rettelse" />
-    <option name="LAST_COMMIT_MESSAGE" value="rettelse" />
+    <MESSAGE value="la til en del query" />
+    <option name="LAST_COMMIT_MESSAGE" value="la til en del query" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

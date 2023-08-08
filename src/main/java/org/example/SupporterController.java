@@ -14,7 +14,9 @@ public class SupporterController {
     @PostMapping("/createSupporter")
     @ResponseBody
     public String createSupporter(@RequestBody Supporter supporter) throws Exception {
+
         if (supporter != null) {
+            supporter.setAktiv(true);
             supporterService.createSupporter(supporter);
             return "ok";
         } else
@@ -24,8 +26,7 @@ public class SupporterController {
     @DeleteMapping("/deleteSupporter/{id}")
     @ResponseBody
     public String deleteSupporterById(@PathVariable long id) throws Exception {
-        System.out.println("hei");
-        if (id > 0) {
+         if (id > 0) {
             Supporter supporter = supporterService.findSupporterById(id);
             if (supporter != null) {
                 return supporterService.deleteSupporter(supporter);
@@ -67,6 +68,17 @@ public class SupporterController {
     @ResponseBody
     public List<Supporter> findSupporterByEtternavn(@PathVariable String etternavn){
         return supporterService.findSupporterByEtternavn(etternavn );
+    }
+
+    @GetMapping("/deactivateSupporter")
+    @ResponseBody
+    public String deactiveSupporter(long id){
+        Supporter supporter = supporterService.findSupporterById(id) ;
+        if(supporter != null){
+            supporter.setAktiv(false);
+            return supporter.getFornavn() + " " + supporter.getEtternavn() + " is deactivated " ;
+        }
+        return "no supporter with id " + id ;
     }
 
 }
