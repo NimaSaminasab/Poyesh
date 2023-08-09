@@ -15,7 +15,8 @@ public class Betaling {
     @GeneratedValue
     private long id ;
     private String fakturaNummer ;
-    private int belop ;
+    private double belop;
+    private double toman ;
     private String dato ;
     @ManyToOne
     Elev elev ;

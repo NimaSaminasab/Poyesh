@@ -25,7 +25,7 @@ public class Family {
     @OneToMany(mappedBy = "family")
     @JsonIgnore
     private List<Elev> elevList = new ArrayList<>();
-    private int sumMotatt ;
+    private double sumMotatt ;
 
     public Family(String farFornavn, String farEtternavn, String morFornavn, String morEtternavn, int sumMotatt) {
         this.farFornavn = farFornavn;

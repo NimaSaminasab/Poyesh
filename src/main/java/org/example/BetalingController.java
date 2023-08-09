@@ -17,6 +17,8 @@ public class BetalingController {
     SupporterService supporterService;
     @Autowired
     FamilyService familyService ;
+    @Autowired
+    CurrencyExchangeService currencyExchangeService ;
 
 
     @PostMapping("/createBetaling")
@@ -25,8 +27,8 @@ public class BetalingController {
         if (betaling != null) {
             Elev elev = elevService.findElevById(betaling.getElev().getId());
             if (elev.isAktiv()) {
-                int betaltTilNa = 0;
-                int sumMotatt = 0 ;
+                double betaltTilNa = 0;
+                double sumMotatt = 0 ;
                 Supporter supporter = supporterService.findSupporterById(betaling.getSupporter().getId());
                 if (supporter.isAktiv()) {
                     if (elev != null && supporter != null) {
@@ -45,6 +47,8 @@ public class BetalingController {
                         sumMotatt = family.getSumMotatt() + betaling.getBelop();
                         family.setSumMotatt(sumMotatt);
                         familyService.familyRepository.save(family) ;
+
+
 
 
                         return "ok";

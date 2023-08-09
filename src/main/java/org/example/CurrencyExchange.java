@@ -38,4 +38,8 @@ public class CurrencyExchange {
         this.gebyr = gebyr;
     }
     public CurrencyExchange(){}
+
+    public double realityRate(){
+        return toman/nok ;
+    }
 }

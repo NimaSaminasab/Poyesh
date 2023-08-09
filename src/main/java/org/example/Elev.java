@@ -26,7 +26,7 @@ public class Elev {
     private String fDato;
     private String skolenavn;
     private int behovSumPrManed;
-    private int motattSumTilNa;
+    private double motattSumTilNa;
     private boolean harSupporter;
     private boolean aktiv;
     private String bilde;
@@ -50,7 +50,7 @@ public class Elev {
 
     public Elev(String fornavn, String etternavn, String personnummer, String telefon1, String telefon2,
                 String telefon3, String by, String fDato,
-                String skolenavn, int behovSumPrManed, int motattSumTilNa,
+                String skolenavn, int behovSumPrManed, double motattSumTilNa,
                 String bilde, String film) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;

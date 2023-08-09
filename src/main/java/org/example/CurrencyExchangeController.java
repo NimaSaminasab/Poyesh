@@ -9,31 +9,50 @@ import java.util.List;
 @CrossOrigin
 public class CurrencyExchangeController {
     @Autowired
-    CurrencyExchangeService currencyExchangeService ;
+    CurrencyExchangeService currencyExchangeService;
+    @Autowired
+    BetalingService betalingService;
+
+
 
     @PostMapping("/createCurrencyExchange")
     @ResponseBody
-    public CurrencyExchange createCurrencyExchange(CurrencyExchange currencyExchange){
-        return currencyExchangeService.createCurrencyExchange(currencyExchange) ;
+    public CurrencyExchange createCurrencyExchange(@RequestBody CurrencyExchange currencyExchange) {
+         List<Betaling> betalingList = betalingService.findAllBetaling();
+        System.out.println(betalingList.size());
+        for (int i = 0; i < betalingList.size(); i++) {
+            System.out.println(betalingList.get(i).getToman());
+            if (betalingList.get(i).getToman() == 0.0) {
+                betalingList.get(i).setToman(betalingList.get(i).getBelop() * currencyExchange.realityRate());
+                System.out.println(betalingList.get(i).getToman());
+                betalingService.betalingRepository.save(betalingList.get(i)) ;
+            }
+
+        }
+
+
+        return currencyExchangeService.createCurrencyExchange(currencyExchange);
     }
 
     @DeleteMapping("/deleteCurrencyExchange")
     @ResponseBody
-    public String deleteCurrencyExchange(CurrencyExchange currencyExchange){
-        if(currencyExchange==null)
-            return "error" ;
+    public String deleteCurrencyExchange(CurrencyExchange currencyExchange) {
+        if (currencyExchange == null)
+            return "error";
         currencyExchangeService.deleteCurrencyExchange(currencyExchange);
-        return "ok" ;
+        return "ok";
     }
+
     @GetMapping("/findCurrencyExchangeById/{id}")
     @ResponseBody
-    public CurrencyExchange findCurrencyById(@PathVariable long id){
-        return currencyExchangeService.findCurrencyExchangeById(id) ;
+    public CurrencyExchange findCurrencyById(@PathVariable long id) {
+        return currencyExchangeService.findCurrencyExchangeById(id);
     }
+
     @GetMapping("findAllCurrencyExchange")
     @ResponseBody
-    public List<CurrencyExchange> findAllCurrencyExchange(){
-       return currencyExchangeService.findAllCurrencyExchange() ;
+    public List<CurrencyExchange> findAllCurrencyExchange() {
+        return currencyExchangeService.findAllCurrencyExchange();
     }
 
 }
