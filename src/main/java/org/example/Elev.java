@@ -27,6 +27,7 @@ public class Elev {
     private String skolenavn;
     private int behovSumPrManed;
     private double motattSumTilNa;
+    private double motattSumTilNaToman ;
     private boolean harSupporter;
     private boolean aktiv;
     private String bilde;

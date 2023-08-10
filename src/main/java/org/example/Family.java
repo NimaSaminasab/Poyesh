@@ -26,6 +26,7 @@ public class Family {
     @JsonIgnore
     private List<Elev> elevList = new ArrayList<>();
     private double sumMotatt ;
+    private double sumMotattToman ;
 
     public Family(String farFornavn, String farEtternavn, String morFornavn, String morEtternavn, int sumMotatt) {
         this.farFornavn = farFornavn;

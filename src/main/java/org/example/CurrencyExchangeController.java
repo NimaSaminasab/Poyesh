@@ -19,22 +19,19 @@ public class CurrencyExchangeController {
     @ResponseBody
     public CurrencyExchange createCurrencyExchange(@RequestBody CurrencyExchange currencyExchange) {
          List<Betaling> betalingList = betalingService.findAllBetaling();
-        System.out.println(betalingList.size());
         for (int i = 0; i < betalingList.size(); i++) {
-            System.out.println(betalingList.get(i).getToman());
-            if (betalingList.get(i).getToman() == 0.0) {
+             if (betalingList.get(i).getToman() == 0.0) {
                 betalingList.get(i).setToman(betalingList.get(i).getBelop() * currencyExchange.realityRate());
-                System.out.println(betalingList.get(i).getToman());
+                betalingList.get(i).getElev().setMotattSumTilNaToman( (betalingList.get(i).getElev().getMotattSumTilNaToman() ) + betalingList.get(i).getBelop() * currencyExchange.realityRate());
+                betalingList.get(i).getSupporter().setBetaltTilNaToman( (betalingList.get(i).getElev().getMotattSumTilNaToman() ) +betalingList.get(i).getBelop() * currencyExchange.realityRate());
+                betalingList.get(i).getElev().getFamily().setSumMotattToman( (betalingList.get(i).getElev().getMotattSumTilNaToman() ) + betalingList.get(i).getBelop() * currencyExchange.realityRate());
                 betalingService.betalingRepository.save(betalingList.get(i)) ;
             }
-
         }
-
-
         return currencyExchangeService.createCurrencyExchange(currencyExchange);
     }
 
-    @DeleteMapping("/deleteCurrencyExchange")
+    @DeleteMapping("/deleteCurrencyExchange/")
     @ResponseBody
     public String deleteCurrencyExchange(CurrencyExchange currencyExchange) {
         if (currencyExchange == null)

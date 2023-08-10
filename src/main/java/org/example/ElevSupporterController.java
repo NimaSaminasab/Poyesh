@@ -24,10 +24,15 @@ public class ElevSupporterController {
             if (elevSupporter != null) {
                 Elev elev = elevService.findElevById(elevSupporter.getElev().getId());
                 Supporter supporter = supporterService.findSupporterById(elevSupporter.getSupporter().getId());
+                if(elevSupporterService.isThisSupporterConnectedToThisElev(supporter,elev)){
+                    return "elev " + elev.getFornavn() +" " + elev.getEtternavn() + " is already supported by " +
+                            supporter.getFornavn() + " " + supporter.getEtternavn() ;
+                }
                 if(!elev.isAktiv())
                     return "elev is inactive" ;
                 if(!supporter.isAktiv())
                     return "supporter is inactive" ;
+
                 if (elev != null && supporter != null) {
                     elev.setHarSupporter(true);
                     elevSupporter.setElev(elev);

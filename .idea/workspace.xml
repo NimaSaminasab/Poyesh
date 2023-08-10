@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33535a36-198b-4e44-921a-b3187c0ab43b" name="Changes" comment="rettet opp feil + CurrencyExchange klassenen">
+    <list default="true" id="33535a36-198b-4e44-921a-b3187c0ab43b" name="Changes" comment="mer rettelse">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Betaling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Betaling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/BetalingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/BetalingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchange.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchangeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Family.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Supporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Supporter.java" afterDir="false" />
     </list>
@@ -165,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691530225973</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="mer rettelse">
+      <option name="closed" value="true" />
+      <created>1691595519481</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1691595519481</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -181,7 +188,8 @@
     <MESSAGE value="rettelse" />
     <MESSAGE value="la til en del query" />
     <MESSAGE value="rettet opp feil + CurrencyExchange klassenen" />
-    <option name="LAST_COMMIT_MESSAGE" value="rettet opp feil + CurrencyExchange klassenen" />
+    <MESSAGE value="mer rettelse" />
+    <option name="LAST_COMMIT_MESSAGE" value="mer rettelse" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

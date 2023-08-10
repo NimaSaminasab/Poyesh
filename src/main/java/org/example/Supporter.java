@@ -22,6 +22,7 @@ public class Supporter {
     private String postnummer ;
     private String poststed ;
     private double betaltTilNa ;
+    private double betaltTilNaToman ;
     private boolean aktiv ;
 
     @OneToMany(mappedBy = "supporter", cascade = CascadeType.ALL)
