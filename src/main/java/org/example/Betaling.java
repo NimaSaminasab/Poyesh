@@ -7,6 +7,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @Getter
 @Setter
@@ -17,7 +19,7 @@ public class Betaling {
     private String fakturaNummer ;
     private double belop;
     private double toman ;
-    private String dato ;
+    private Date dato ;
     @ManyToOne
     Elev elev ;
     @ManyToOne
@@ -25,7 +27,7 @@ public class Betaling {
     @ManyToOne
     CurrencyExchange currencyExchange ;
 
-    public Betaling(String fakturaNummer, int belop, String dato,
+    public Betaling(String fakturaNummer, int belop, Date dato,
                     Elev elev, Supporter supporter) {
         this.fakturaNummer = fakturaNummer;
         this.belop = belop;

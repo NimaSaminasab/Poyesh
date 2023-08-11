@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33535a36-198b-4e44-921a-b3187c0ab43b" name="Changes" comment="mer rettelse">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchangeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Betaling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Betaling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CurrencyExchange.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Elev.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevSupporterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Family.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Supporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Supporter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,16 +33,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "full.screen.before.presentation.mode": "true",
-    "last_opened_file_path": "C:/Users/nimas/Desktop/PauEx2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nimas/Desktop/PauEx2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />

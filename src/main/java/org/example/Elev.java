@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class Elev {
     private String telefon2;
     private String telefon3;
     private String by;
-    private String fDato;
+    private Date fDato;
     private String skolenavn;
     private int behovSumPrManed;
     private double motattSumTilNa;
@@ -50,7 +51,7 @@ public class Elev {
 
 
     public Elev(String fornavn, String etternavn, String personnummer, String telefon1, String telefon2,
-                String telefon3, String by, String fDato,
+                String telefon3, String by, Date fDato,
                 String skolenavn, int behovSumPrManed, double motattSumTilNa,
                 String bilde, String film) {
         this.fornavn = fornavn;

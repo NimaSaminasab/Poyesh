@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class CurrencyExchange {
     @GeneratedValue
 
     private long id ;
-    String date ;
+    Date date ;
     double nok ;
     double toman ;
     double kurs ;
@@ -30,7 +31,7 @@ public class CurrencyExchange {
     private List<Betaling> betalingList = new ArrayList<>();
 
 
-    public CurrencyExchange(String date, double nok, double toman, double kurs, double gebyr) {
+    public CurrencyExchange(Date date, double nok, double toman, double kurs, double gebyr) {
         this.date = date;
         this.nok = nok;
         this.toman = toman;
