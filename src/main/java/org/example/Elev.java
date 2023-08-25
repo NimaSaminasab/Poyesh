@@ -1,5 +1,6 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Elev {
     private String telefon2;
     private String telefon3;
     private String by;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "UTC")
     private Date fDato;
     private String skolenavn;
     private int behovSumPrManed;

@@ -11,20 +11,21 @@ public class BankInfoController {
     @Autowired
     BankInfoService bankInfoService;
     @Autowired
-    ElevService elevService ;
+    ElevService elevService;
 
     @PostMapping("/createBankInfo")
     @ResponseBody
     public String createBankInfo(@RequestBody BankInfo bankInfo) throws Exception {
-        Elev elev = elevService.findElevById(bankInfo.getElev().getId()) ;
-        if(! elev.isAktiv())
-            return "Elev is inactive" ;
+        Elev elev = elevService.findElevById(bankInfo.getElev().getId());
+        if (!elev.isAktiv())
+            return "Elev is inactive";
         if (bankInfo != null) {
             bankInfoService.createBankInfo(bankInfo);
             return "ok";
         } else
             return "error";
     }
+
     @DeleteMapping("/deleteBankInfo/{id}")
     @ResponseBody
     public String deleteBankInfoById(@PathVariable long id) throws Exception {
@@ -46,6 +47,27 @@ public class BankInfoController {
         }
         return null;
     }
+
+    @GetMapping("/findABankInfo/{searchWord}")
+    @ResponseBody
+    public BankInfo findABankInfo(@PathVariable String searchWord) {
+        BankInfo bankInfo = null;
+
+        if (searchWord != null) {
+            bankInfo = bankInfoService.findBankInfoByKontonummer(searchWord);
+            if (bankInfo == null) {
+                bankInfo = bankInfoService.findBankInfoByShebaNummer(searchWord);
+                if (bankInfo == null) {
+                    bankInfo = bankInfoService.findBankInfoByKortNummer(searchWord);
+                    if(bankInfo==null){
+                        bankInfo = bankInfoService.findBankInfoByKortHoldersNavn(searchWord);
+                    }
+                }
+            }
+        }
+        return bankInfo;
+    }
+
 
     @GetMapping("/findAllBankInfo")
     @ResponseBody

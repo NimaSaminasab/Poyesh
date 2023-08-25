@@ -3,6 +3,7 @@ package org.example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,4 +28,18 @@ public class BetalingService {
     public List<Betaling> findAllBetaling(){
         return (List<Betaling>) betalingRepository.findAll();
     }
-}
+
+    public List<Betaling> findABetalingByFakturanummer(String fakturaNummer) {
+        return betalingRepository.findByfakturaNummer(fakturaNummer) ;
+    }
+
+    public List<Betaling> findABetalingByDate(Date dato) {
+        return betalingRepository.findByDato(dato) ;
+    }
+
+    public List<Betaling> findABetalingById2(long id) {
+        return (List<Betaling>) betalingRepository.findById(id).orElse(null);
+        }
+
+    }
+

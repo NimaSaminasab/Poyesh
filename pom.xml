@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.1</version>
+        <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
     <artifactId>Poyeshe_Mehrabani</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Poyeshe_Mehrabani</name>
-    <description>Poyeshe_Mehrabani</description>
+    <name>PayEx2</name>
+    <description>PayEx2</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -40,11 +40,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>6.2.5.Final</version>
         </dependency>
     </dependencies>
 

@@ -15,20 +15,19 @@ public class BankInfo {
     private String bankNavn ;
     private String kontoHoldersNavn ;
     private String kontoNummer ;
-    private String shebaNummber ;
-    private String kortNummber ;
-
+    private String shebaNummer ;
+    private String kortNummer ;
     @ManyToOne
     private Elev elev ;
 
     public BankInfo(String bankNavn, String kontoHoldersNavn,
-                    String kontoNummer, String shebaNummber,
-                    String kortNummber, Elev elev) {
+                    String kontoNummer, String shebaNummer,
+                    String kortNummer, Elev elev) {
         this.bankNavn = bankNavn;
         this.kontoHoldersNavn = kontoHoldersNavn;
         this.kontoNummer = kontoNummer;
-        this.shebaNummber = shebaNummber;
-        this.kortNummber = kortNummber;
+        this.shebaNummer = shebaNummer;
+        this.kortNummer = kortNummer;
         this.elev = elev;
     }
     public BankInfo(){}

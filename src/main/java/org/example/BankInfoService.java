@@ -28,4 +28,20 @@ public class BankInfoService {
     public List<BankInfo> findAllBankInfo(){
        return (List<BankInfo>) bankInfoRepository.findAll();
     }
+
+
+    public BankInfo findBankInfoByKontonummer(String kontoNummer) {
+        return bankInfoRepository.findBykontoNummer(kontoNummer) ;
+    }
+    public BankInfo findBankInfoByShebaNummer(String shebaNummer){
+        return bankInfoRepository.findByShebaNummer(shebaNummer) ;
+    }
+
+    public BankInfo findBankInfoByKortNummer(String searchWord) {
+        return bankInfoRepository.findByKortNummer(searchWord) ;
+    }
+
+    public BankInfo findBankInfoByKortHoldersNavn(String searchWord) {
+        return bankInfoRepository.findByKontoHoldersNavn(searchWord) ;
+    }
 }

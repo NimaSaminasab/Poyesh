@@ -16,9 +16,9 @@ public class BetalingController {
     @Autowired
     SupporterService supporterService;
     @Autowired
-    FamilyService familyService ;
+    FamilyService familyService;
     @Autowired
-    CurrencyExchangeService currencyExchangeService ;
+    CurrencyExchangeService currencyExchangeService;
 
 
     @PostMapping("/createBetaling")
@@ -28,7 +28,7 @@ public class BetalingController {
             Elev elev = elevService.findElevById(betaling.getElev().getId());
             if (elev.isAktiv()) {
                 double betaltTilNa = 0;
-                double sumMotatt = 0 ;
+                double sumMotatt = 0;
                 Supporter supporter = supporterService.findSupporterById(betaling.getSupporter().getId());
                 if (supporter.isAktiv()) {
                     if (elev != null && supporter != null) {
@@ -44,13 +44,11 @@ public class BetalingController {
                         supporterService.supporterRepository.save(supporter);
                         elevService.elevRepository.save(elev);
                         Family family = elev.getFamily();
-                        sumMotatt = family.getSumMotatt() + betaling.getBelop();
-                        family.setSumMotatt(sumMotatt);
-                        familyService.familyRepository.save(family) ;
-
-
-
-
+                        if(family!=null) {
+                            sumMotatt = family.getSumMotatt() + betaling.getBelop();
+                            family.setSumMotatt(sumMotatt);
+                            familyService.familyRepository.save(family);
+                        }
                         return "ok";
                     } else
                         return "error";
@@ -59,10 +57,8 @@ public class BetalingController {
             } else
                 return "elev is inactiv";
         }
-        return "error" ;
+        return "error";
     }
-
-
     @DeleteMapping("/deleteBetaling/{id}")
     @ResponseBody
     public String deleteBetalingById(@PathVariable long id) throws Exception {
@@ -84,6 +80,24 @@ public class BetalingController {
         }
         return null;
     }
+
+    @GetMapping("/findABetaling/")
+    @ResponseBody
+    public List<Betaling> findABetaling(@RequestBody Betaling betaling) {
+        Betaling betaling1 = null ;
+        if (betaling.getId() > 0) {
+            return betalingService.findABetalingById2(betaling.getId() );
+        }
+        else if(betaling.getFakturaNummer()!=null){
+            return betalingService.findABetalingByFakturanummer(betaling.getFakturaNummer()) ;
+        }
+        else if(betaling.getDato()!=null){
+            betalingService.findABetalingByDate(betaling.getDato() ) ;
+        }
+
+        return null;
+    }
+
 
     @GetMapping("/findAllBetaling")
     @ResponseBody

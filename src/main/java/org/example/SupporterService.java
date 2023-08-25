@@ -60,4 +60,8 @@ public class SupporterService {
     public List<Supporter> findSupporterByEtternavn(String etternavn){
         return supporterRepository.findByEtternavnIgnoreCase(etternavn) ;
     }
+
+    public Supporter findSupporterByTelefon(String telefon) {
+        return supporterRepository.findByTelefon(telefon) ;
+    }
 }

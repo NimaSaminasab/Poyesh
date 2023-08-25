@@ -3,6 +3,7 @@ package org.example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,9 @@ public class CurrencyExchangeController {
                 betalingList.get(i).setToman(betalingList.get(i).getBelop() * currencyExchange.realityRate());
                 betalingList.get(i).getElev().setMotattSumTilNaToman( (betalingList.get(i).getElev().getMotattSumTilNaToman() ) + betalingList.get(i).getBelop() * currencyExchange.realityRate());
                 betalingList.get(i).getSupporter().setBetaltTilNaToman( (betalingList.get(i).getElev().getMotattSumTilNaToman() ) +betalingList.get(i).getBelop() * currencyExchange.realityRate());
-                betalingList.get(i).getElev().getFamily().setSumMotattToman( (betalingList.get(i).getElev().getMotattSumTilNaToman() ) + betalingList.get(i).getBelop() * currencyExchange.realityRate());
+                if(betalingList.get(i).getElev().getFamily()!=null) {
+                    betalingList.get(i).getElev().getFamily().setSumMotattToman((betalingList.get(i).getElev().getMotattSumTilNaToman()) + betalingList.get(i).getBelop() * currencyExchange.realityRate());
+                }
                 betalingService.betalingRepository.save(betalingList.get(i)) ;
             }
         }
@@ -45,6 +48,13 @@ public class CurrencyExchangeController {
     public CurrencyExchange findCurrencyById(@PathVariable long id) {
         return currencyExchangeService.findCurrencyExchangeById(id);
     }
+
+    @GetMapping("/findCurrencyExchangeByDate/{date}")
+    @ResponseBody
+    public CurrencyExchange findCurrencyByDate(@PathVariable Date date) {
+        return currencyExchangeService.findCurrencyExchangeByDate(date);
+    }
+
 
     @GetMapping("findAllCurrencyExchange")
     @ResponseBody

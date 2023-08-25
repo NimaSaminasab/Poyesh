@@ -11,15 +11,18 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Setter
 @Getter
+
 public class CurrencyExchange {
     @Id
     @GeneratedValue
 
     private long id ;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "UTC")
     Date date ;
     double nok ;
     double toman ;

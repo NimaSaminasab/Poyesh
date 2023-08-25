@@ -69,6 +69,11 @@ public class SupporterController {
     public List<Supporter> findSupporterByEtternavn(@PathVariable String etternavn){
         return supporterService.findSupporterByEtternavn(etternavn );
     }
+    @GetMapping("/findSupporterByTelefon/{telefon}")
+    @ResponseBody
+    public Supporter findSupporterByTelefon(@PathVariable String telefon){
+        return supporterService.findSupporterByTelefon(telefon );
+    }
 
     @GetMapping("/deactivateSupporter")
     @ResponseBody
@@ -76,6 +81,18 @@ public class SupporterController {
         Supporter supporter = supporterService.findSupporterById(id) ;
         if(supporter != null){
             supporter.setAktiv(false);
+            supporterService.supporterRepository.save(supporter) ;
+            return supporter.getFornavn() + " " + supporter.getEtternavn() + " is deactivated " ;
+        }
+        return "no supporter with id " + id ;
+    }
+    @GetMapping("/reactivateSupporter")
+    @ResponseBody
+    public String reactiveSupporter(long id){
+        Supporter supporter = supporterService.findSupporterById(id) ;
+        if(supporter != null){
+            supporter.setAktiv(true);
+            supporterService.supporterRepository.save(supporter) ;
             return supporter.getFornavn() + " " + supporter.getEtternavn() + " is deactivated " ;
         }
         return "no supporter with id " + id ;

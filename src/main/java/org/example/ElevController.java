@@ -18,7 +18,7 @@ public class ElevController {
     @ResponseBody
     public String createElev(@RequestBody Elev elev) throws Exception {
         if (elev != null) {
-            if (elevService.findElevByPersonnummer(elev.getPersonnummer()) == null) {
+             if (elevService.findElevByPersonnummer(elev.getPersonnummer()) == null) {
                 elev.setAktiv(true);
                 elevService.createElev(elev);
                 return "ok";
@@ -100,6 +100,7 @@ public class ElevController {
         Elev elev = elevService.findElevById(id);
         if (elev != null) {
             elev.setAktiv(false);
+            elevService.elevRepository.save(elev) ;
             return elev.getFornavn() + " " + elev.getEtternavn() + " is deactivated ";
         }
         return "no elev with id " + id;
@@ -110,6 +111,7 @@ public class ElevController {
         Elev elev = elevService.findElevById(id);
         if (elev != null) {
             elev.setAktiv(true);
+            elevService.elevRepository.save(elev) ;
             return elev.getFornavn() + " " + elev.getEtternavn() + " is reactivated ";
         }
         return "no elev with id " + id;
