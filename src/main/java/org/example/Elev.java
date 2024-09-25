@@ -9,7 +9,6 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -24,7 +23,7 @@ public class Elev {
     private String telefon1;
     private String telefon2;
     private String telefon3;
-    private String by;
+    private String city;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "UTC")
     private Date fDato;
     private String skolenavn;
@@ -53,13 +52,13 @@ public class Elev {
 
 
     public Elev(String fornavn, String etternavn, String personnummer, String telefon1, String telefon2,
-                String telefon3, String by, Date fDato,
+                String telefon3, String city, Date fDato,
                 String skolenavn, int behovSumPrManed, double motattSumTilNa,
                 String bilde, String film) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.personnummer = personnummer;
-        this.by = by;
+        this.city = city;
         this.fDato = fDato;
         this.skolenavn = skolenavn;
         this.behovSumPrManed = behovSumPrManed;

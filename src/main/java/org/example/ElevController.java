@@ -83,8 +83,8 @@ public class ElevController {
 
     @GetMapping("findElevByby/{by}")
     @ResponseBody
-    public List<Elev> findElevByby(@PathVariable String by) {
-        return (List<Elev>) elevService.findElevByby(by);
+    public List<Elev> findElevByCity(@PathVariable String by) {
+        return (List<Elev>) elevService.findElevByCity(by);
     }
 
     @GetMapping("/findElevByHasSupportIsFalse")

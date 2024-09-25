@@ -92,9 +92,9 @@ public class ElevService {
     public List<Elev> findElevByFornavnAndEtternavn(String fornavn, String etternavn){
         return elevRepository.findByFornavnIgnoreCaseAndEtternavnIgnoreCase(fornavn,etternavn) ;
     }
-    public List<Elev> findElevByby(String by){
+    public List<Elev> findElevByCity(String city){
 
-        return elevRepository.findBybyIgnoreCase(by) ;
+        return elevRepository.findByCityIgnoreCase(city) ;
     }
 
     public List<Elev> findElevWhoHasNoSupporter(){

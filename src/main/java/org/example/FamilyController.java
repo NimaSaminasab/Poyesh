@@ -56,9 +56,10 @@ public class FamilyController {
         return familyService.findAllFamily();
     }
 
-    @GetMapping("/assignElevToFamily/{elevId}/{familyId}")
+    @PostMapping("/assignElevToFamily/{elevId}/{familyId}")
     @ResponseBody
     public String assignElevToFamily(@PathVariable long elevId,@PathVariable long familyId){
+        System.out.println("elevid : " + elevId + "family id : " + familyId );
         Family family= familyService.findFamilyById(familyId);
         if(family== null)
             return "FamilyId " + familyId + " doesnt exist." ;
@@ -68,8 +69,9 @@ public class FamilyController {
         if(elev.addFamilyToElev(family) ) {
             elevService.elevRepository.save(elev);
         }
-        else
-            return "Family is inactive" ;
+        else {
+            return "Family is inactive";
+        }
         if(family.addElevToFamily(elev) ) {
             familyService.familyRepository.save(family);
             return "ok";
@@ -96,7 +98,4 @@ public class FamilyController {
         }
         return "no family with id " + id ;
     }
-
-
-
 }
