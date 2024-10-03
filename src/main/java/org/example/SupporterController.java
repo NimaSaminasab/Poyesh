@@ -75,9 +75,9 @@ public class SupporterController {
         return supporterService.findSupporterByTelefon(telefon );
     }
 
-    @GetMapping("/deactivateSupporter")
+    @GetMapping("/deactivateSupporter/{id}")
     @ResponseBody
-    public String deactiveSupporter(long id){
+    public String deactiveSupporter(@PathVariable long id){
         Supporter supporter = supporterService.findSupporterById(id) ;
         if(supporter != null){
             supporter.setAktiv(false);
@@ -86,9 +86,9 @@ public class SupporterController {
         }
         return "no supporter with id " + id ;
     }
-    @GetMapping("/reactivateSupporter")
+    @GetMapping("/reactivateSupporter/{id}")
     @ResponseBody
-    public String reactiveSupporter(long id){
+    public String reactiveSupporter(@PathVariable long id){
         Supporter supporter = supporterService.findSupporterById(id) ;
         if(supporter != null){
             supporter.setAktiv(true);

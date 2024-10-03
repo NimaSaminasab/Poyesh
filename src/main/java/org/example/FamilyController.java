@@ -88,13 +88,28 @@ public class FamilyController {
     public List<Family> findFamilyByMorFornavnAndEtternavn(@PathVariable String fornavn, @PathVariable String etternavn){
         return familyService.findFamilyByMorFornavnAndEtternavn(fornavn,etternavn) ;
     }
-    @GetMapping("/deactivateFamily")
+    @GetMapping("/deactivateFamily/{id}")
     @ResponseBody
-    public String deactiveFamily(long id){
+    public String deactiveFamily(@PathVariable long id){
         Family family = familyService.findFamilyById(id) ;
+        boolean test ;
         if(family != null){
             family.setAktiv(false);
+            familyService.familyRepository.save(family) ;
             return "Family with id " + id  + " is deactivated " ;
+        }
+        return "no family with id " + id ;
+    }
+
+
+    @GetMapping("/reactivateFamily/{id}")
+    @ResponseBody
+    public String reactiveFamily(@PathVariable long id){
+        Family family = familyService.findFamilyById(id) ;
+        if(family != null){
+            family.setAktiv(true);
+            familyService.familyRepository.save(family) ;
+            return "Family with id " + id  + " is reactivated " ;
         }
         return "no family with id " + id ;
     }

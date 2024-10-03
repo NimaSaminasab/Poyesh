@@ -40,9 +40,14 @@ public class Family {
     public boolean addElevToFamily(Elev elev){
         if(elev.isAktiv()) {
             elevList.add(elev);
+
+
             return true;
         }
         else
             return false;
     }
+    public void setAktive(boolean isAktiv){
+        this.isAktiv = isAktiv ;
+     }
 }

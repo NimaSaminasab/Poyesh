@@ -21,15 +21,15 @@ public class BetalingController {
     CurrencyExchangeService currencyExchangeService;
 
 
-    @PostMapping("/createBetaling")
+    @PostMapping("/createBetaling/{elevid}/{supporterid}")
     @ResponseBody
-    public String createBetaling(@RequestBody Betaling betaling) throws Exception {
-        if (betaling != null) {
-            Elev elev = elevService.findElevById(betaling.getElev().getId());
-            if (elev.isAktiv()) {
+    public String createBetaling(@RequestBody Betaling betaling,@PathVariable long elevId, @PathVariable long supporterid) throws Exception {
+         if (betaling != null) {
+            Elev elev = elevService.findElevById(elevId);
+             if (elev.isAktiv()) {
                 double betaltTilNa = 0;
                 double sumMotatt = 0;
-                Supporter supporter = supporterService.findSupporterById(betaling.getSupporter().getId());
+                Supporter supporter = supporterService.findSupporterById(supporterid);
                 if (supporter.isAktiv()) {
                     if (elev != null && supporter != null) {
                         betaling.setElev(elev);
